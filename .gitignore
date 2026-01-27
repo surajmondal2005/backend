@@ -1,0 +1,46 @@
+# ---------------------------
+# Node.js
+# ---------------------------
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+dist/
+build/
+.cache/
+
+# ---------------------------
+# Environment Variables
+# ---------------------------
+.env
+*.env.*
+
+# ---------------------------
+# Firebase Admin Keys
+# EXTREMELY IMPORTANT:
+# NEVER upload service-account JSON to GitHub
+# ---------------------------
+firebase-service-account.json
+
+# If you ever rename the file, also ignore:
+service-account.json
+*.service-account.json
+
+# ---------------------------
+# Uploads (user images)
+# Do not commit uploaded media
+# ---------------------------
+uploads/
+
+# ---------------------------
+# OS Files
+# ---------------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------------
+# Logs
+# ---------------------------
+logs
+*.log
+logs/*.log
