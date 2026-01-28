@@ -7,6 +7,7 @@ import {
   sendMessage,
   markMessageAsRead,
   searchMessages,
+  clearChatForMe,
   deleteMessageForMe,
   deleteMessageForEveryone,
   editMessage,
@@ -53,6 +54,7 @@ router.get("/search/:userId", searchMessages);
 // ========== MESSAGE DELETION ROUTES ==========
 router.delete("/delete-for-me/:messageId", deleteMessageForMe);
 router.delete("/delete-for-everyone/:messageId", deleteMessageForEveryone);
+router.delete("/clear-chat/:userId", clearChatForMe);
 
 // ========== MESSAGE EDITING ROUTES ==========
 router.put("/edit/:messageId", editMessage);

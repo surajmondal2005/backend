@@ -806,3 +806,38 @@ export const removeReaction = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+
+//Api for clear chat
+export const clearChatForMe = async (req, res) => {
+  const myId = req.user._id;
+  const userId = req.params.userId;
+
+  const messages = await Message.find({
+    $or: [
+      { senderId: myId, receiverId: userId },
+      { senderId: userId, receiverId: myId }
+    ]
+  });
+
+  for (let message of messages) {
+    const alreadyDeleted = message.deletedBy.some(
+      record => record.userId.toString() === myId.toString()
+    );
+
+    if (!alreadyDeleted) {
+      message.deletedBy.push({
+        userId: myId,
+        deleteType: "forMe",
+        deletedAt: new Date()
+      });
+
+      await message.save();
+    }
+  }
+
+  res.status(200).json({
+    success: true,
+    message: "Chat cleared for you"
+  });
+};
